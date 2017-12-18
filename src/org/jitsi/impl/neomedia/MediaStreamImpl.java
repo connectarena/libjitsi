@@ -339,6 +339,11 @@ public class MediaStreamImpl
         = new OriginalHeaderBlockTransformEngine();
 
     /**
+     * The {@link DiagnosticContext} that this instance provides.
+     */
+    private final DiagnosticContext diagnosticContext;
+
+    /**
      * The ID of the frame markings RTP header extension. We use this field as
      * a cache, in order to not access {@link #activeRTPExtensions} every time.
      */
@@ -420,6 +425,17 @@ public class MediaStreamImpl
                     "Created " + getClass().getSimpleName() + " with hashCode "
                         + hashCode());
         }
+
+        this.diagnosticContext = new DiagnosticContext();
+        diagnosticContext.put("stream", hashCode());
+    }
+
+    /**
+     * Gets the {@link DiagnosticContext} of this instance.
+     */
+    public DiagnosticContext getDiagnosticContext()
+    {
+        return diagnosticContext;
     }
 
     /**

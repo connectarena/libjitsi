@@ -462,7 +462,7 @@ public class VideoMediaStreamImpl
                                     ssrcs,
                                     bitrate);
                     }
-                });
+                }, getDiagnosticContext());
 
     /**
      * The facility which aids this instance in managing a list of
@@ -521,13 +521,6 @@ public class VideoMediaStreamImpl
         super(connector, device, srtpControl);
 
         recurringRunnableExecutor.registerRecurringRunnable(rtcpFeedbackTermination);
-        if (logger.isTraceEnabled())
-        {
-            logger.trace("created_vms," + hashCode()
-                    + "," + System.currentTimeMillis()
-                    + "," + rtcpFeedbackTermination.hashCode()
-                    + "," + remoteBitrateEstimator.hashCode());
-        }
     }
 
     /**
